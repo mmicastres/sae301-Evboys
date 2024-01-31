@@ -1,0 +1,33 @@
+{% extends "index.html.twig" %}
+
+{% block section %}
+	<h1>Gestion des contexte</h1>
+
+	<form action="index.php" method="post">
+
+		<label for="id_contexte">Sélectionnez le contexte à modifier/supprimer</label>
+
+		<select name="id_contexte" id="id_contexte">
+			<option value="default" selected disabled hidden>Sélectionner le contexte</option>
+			{% for cont in contextes %}
+				<option value="{{cont.id_contexte}}">{{cont.id}} _ {{cont.intitule}}</option>
+			{% endfor %}
+		</select>
+		<label for="id">Titre de l</label>
+		<input type="text" name="id" id="id" placeholder="Saisir R.XXX / SAE.XXX">
+		<select name="semestre" id="semestre">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+		</select>
+		<input type="text" name="intitule" id="intitule" placeholder="Saisir l'intitulé">
+		<input type="submit" class="btn btn-success" name="ajoutCont" value="Ajouter"/>
+		<input type="submit" class="btn btn-primary" name="modifCont" value="Modifier"/>
+		<input type="submit" class="btn btn-danger" name="supprCont" value="Supprimer"/>
+
+	</form>
+
+{% endblock %}

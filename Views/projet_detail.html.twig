@@ -1,0 +1,49 @@
+{% extends "index.html.twig" %}
+
+{% block section %}
+	{% for pro in det %}
+		{% if loop.first %}
+				<img src="data:image/jpeg;base64,{{ pro.img }}" class="d-block img-fluid item-align-center w-50" alt="...">
+			<p>{{pro.description}}</p>
+			<table>
+				<tr>
+					<td>{{pro.titre}}</td>
+					<td>{{pro.categorie}}</td>
+					<td>{{pro.id}}</td>
+
+					{% for tag in tags %}
+						<td>{{tag.nom}}</td>
+					{% endfor %}
+				</tr>
+			</table>
+		{% endif %}
+
+		<ul>
+			<li>{{pro.utilisateur.prenom}}</li>
+		</ul>
+
+
+		<div>
+			{% for com in coms %}
+				<p>{{com.commentaire}}
+					{{com.evaluation}}/5</p>
+
+			{% endfor %}
+		</div> 
+		<form action="index.php" method="post">
+			<label for="commentaire">Donnez votre Avis</label>
+			<textarea name="commentaire" id="commentaire" cols="20" rows="3">
+			</textarea>
+			<select name="evaluation" id="evaluation">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+			</select>
+			<input type="hidden" id="id_utilisateur" name="id_utilisateur" value="{{ id_utilisateur }}"/>
+			<input type="hidden" id="id_projets" name="id_projets" value="{{pro.id_projets}}"/>
+			<input type="submit" class="btn btn-primary " name="soumettre" value="Soumettre"/>
+		</form>
+		{% endfor %}
+	{% endblock %}

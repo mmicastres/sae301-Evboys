@@ -1,0 +1,51 @@
+{% extends "index.html.twig" %}
+
+{% block section %}
+    <div class="container mt-5">
+        <h1 class="text-light mb-4">Vos données personnelles</h1>
+        <table class="table table-hover table-dark table-sm">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <b>Prénom</b>
+                    </td>
+                    <td>{{ utilisateur.prenom }}</td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Nom</b>
+                    </td>
+                    <td>{{ utilisateur.nom }}</td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Email</b>
+                    </td>
+                    <td>{{ utilisateur.email }}</td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Id IUT</b>
+                    </td>
+                    <td>{{ utilisateur.id_iut }}</td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Projets</b>
+                    </td>
+                    <td>
+                        {% for projet in projets %}
+                            {{ projet.titre }}<br>
+                        {% endfor %}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

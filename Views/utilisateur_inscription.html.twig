@@ -1,0 +1,64 @@
+{% extends "index.html.twig" %}
+
+{% block section %}
+
+	<form method="post" action="index.php" class="col-12">
+		<fieldset>
+			<legend class="text-align-center">Inscription</legend>
+
+			<div class="form-group row">
+				<label for="nom" class="col-sm-2 col-form-label col-form-label-sm">Nom<span class="text-danger">*</span></label>
+				<div class="col-sm-6">
+					<input type="text" id="nom" class="form-control form-control-sm" name="nom" required placeholder="Saisir votre nom"/>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label for="prenom" class="col-sm-2 col-form-label col-form-label-sm">Prénom<span class="text-danger">*</span></label>
+				<div class="col-sm-6">
+					<input type="text" id="prenom" class="form-control form-control-sm" name="prenom" required placeholder="Saisir votre prenom"/>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label for="mdp" class="col-sm-2 col-form-label col-form-label-sm">Mot de passe<span class="text-danger">*</span></label>
+				<div class="col-sm-6">
+					<input type="password" id="mdp" class="form-control form-control-sm" name="mdp" required placeholder="Saisir votre mot de passe"/>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label for="email" class="col-sm-2 col-form-label col-form-label-sm">Email<span class="text-danger">*</span></label>
+				<div class="col-sm-6">
+					<input type="email" id="email" class="form-control form-control-sm" name="email" required placeholder="Saisir votre adresse email"/>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label for="idiut" class="col-sm-2 col-form-label col-form-label-sm">Identifiant IUT<span class="text-danger">*</span></label>
+				<div class="col-sm-6">
+					<input type="text" id="id_iut" class="form-control form-control-sm" name="id_iut" required placeholder="Saisir votre Identifiant IUT"/>
+				</div>
+			</div>
+
+			<input type="submit" class="btn btn-primary" name="inscription" value="inscription"/>
+		</fieldset>
+	</form>
+    <p>Vous avez déjà un compte ? <a class="link-opacity-100" href="?action=login">Connexion</a></p>
+    <script>
+        function mailValide() {
+            // Récupérer la valeur de l'adresse email
+            var email = document.getElementById("email").value;
+
+            // Vérification que l'adresse email se termine par "@etu.iut-tlse3.fr"
+            if (!email.endsWith("@etu.iut-tlse3.fr")) {
+                alert("L'adresse e-mail doit se terminer par @etu.iut-tlse3.fr");
+                return false; // Annule la soumission du formulaire
+            }
+
+            // Si tout est correct, autoriser la soumission du formulaire
+            return true;
+        }
+    </script>
+
+{% endblock %}

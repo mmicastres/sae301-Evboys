@@ -1,0 +1,32 @@
+{% extends "index.html.twig" %}
+
+{% block section %}
+	<h1>Gestion des Utilisateur</h1>
+
+	<form action="index.php" method="post">
+
+		<label for="id_utilisateur">Sélectionnez les Utilisateur à ajouter/supprimer</label>
+
+		<select name="id_utilisateur" id="id_utilisateur">
+			<option value="default" selected disabled hidden>Sélectionner l'utilisateur</option>
+			{% for uti in utilisateurs %}
+				<option value="{{uti.id_utilisateur}}">{{uti.nom}}
+					{{uti.prenom}}</option>
+			{% endfor %}
+		</select>
+		<label for="nom">Nom Utilisateur</label>
+		<input type="text" name="nom" id="nom" placeholder="Nom de l'utilisateur">
+		<label for="prenom">Prenom Utilisateur</label>
+		<input type="text" name="prenom" id="prenom" placeholder="Prénom de l'utilisateur">
+		<label for="id_iut">Identifiant IUT Utilisateur</label>
+		<input type="text" name="id_iut" id="id_iut" placeholder="Identifiant IUT de l'utilisateur">
+		<label for="email">Email Utilisateur</label>
+		<input type="email" name="email" id="email" placeholder="Email de l'utilisateur">
+		<label for="mdp">Mot de passe Initiale pour un Utilisateur</label>
+		<input type="text" name="mdp" id="mdp" placeholder="Mot de passe pour l'utilisateur">
+
+		<input type="submit" class="btn btn-success" name="ajoutUtilisateur" value="Ajouter"/>
+		<input type="submit" class="btn btn-primary" name="modifUtilisateur" value="Modifier"/>
+		<input type="submit" class="btn btn-danger" name="supprUtilisateur" value="Supprimer"/>
+	</form>
+{% endblock %}

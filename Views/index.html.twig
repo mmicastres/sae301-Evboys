@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<title>Gestionnaire de Projets Etudiants</title>
+		<link rel="stylesheet" href="style.css">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	</head>
+	<body class="text-bg-dark vh-100">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="?">Gestionnaire de Projets</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+					<ul class="navbar-nav">
+						<li>
+							<a class="nav-link" href="?action=liste">Projets</a>
+						</li>
+
+						<li>
+							<a class="nav-link" href="?action=recherche">Rechercher</a>
+						</li>
+
+						{% if acces == "oui" and admin == false %}
+							<li>
+								<a class="nav-link" href="?action=mespros">Gérer ses Projets</a>
+							</li>
+
+
+							<li>
+								<a class="nav-link" href="?action=espace">Espace Personnel</a>
+							</li>
+							<li>
+								<a class="nav-link" href="?action=logout">Deconnexion</a>
+							</li>
+						{% elseif acces == "oui" and admin == true %}
+							<li>
+								<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">Gestion</a>
+								<ul class="dropdown-menu bg-dark">
+									<li class="dropdown-item bg-dark">
+										<a class="nav-link link-light" href="?action=mespros">Mes projets</a>
+									</li>
+									<li class="dropdown-item bg-dark">
+										<a class="nav-link link-light" href="?action=adminprojets">Projets Utilisateurs</a>
+									</li>
+									<li class="dropdown-item bg-dark">
+										<a class="nav-link link-light" href="?action=tags">Tags</a>
+									</li>
+									<li class="dropdown-item bg-dark">
+										<a class="nav-link link-light" href="?action=categorie">Catégories</a>
+									</li>
+									<li class="dropdown-item bg-dark">
+										<a class="nav-link link-light" href="?action=contexte">Contexte</a>
+									</li>
+									<li class="dropdown-item bg-dark">
+										<a class="nav-link link-light" href="?action=utilisateur">Utilisateur</a>
+									</li>
+
+								</ul>
+							</li>
+							<li>
+								<a class="nav-link" href="?action=espace">Espace Personnel</a>
+							</li>
+							<li>
+								<a class="nav-link" href="?action=logout">Deconnexion</a>
+							</li>
+
+						{% else %}
+							<li>
+								<a class="nav-link" href="?action=login">Connexion</a>
+							</li>
+						{% endif %}
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		{% block section %}
+			{{message}}
+			<div class="container">
+				<h1 class="fs-2 text-center mb-3">SAE301 Gestionnaire de Projets des Etudiants</h1>
+				<p class="mt-5 col-9 fs-6 align-center">Voici le projet d’un site de gestionnaire des projets réalisés par les étudiants de l’IUT de Castres en MMI, ceci est un projet que l’on doit réaliser lors de notre SAE 301 Développer une expérience utilisateur avec certaines consignes.</p>
+			</div>
+
+			<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+				<div class="carousel-inner">
+
+					{% for pro in pros %}
+						<div class="carousel-item active align-self-center" data-bs-interval="2000">
+							<img src="data:image/jpeg;base64,{{ pro.img }}" class="d-block img-fluid item-align-center w-50" alt="...">
+						</div>
+					{% endfor %}
+
+				</div>
+
+				<button class="carousel-control-prev " type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next " type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
+			</div>
+		{% endblock %}
+
+		<footer class="text-bg-secondary fixed-bottom">
+			Copyright &copy;
+			<a href="index.php">Boyer Evan</a>
+			- Tous droits réservés</footer>
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+	</body>
+</html>

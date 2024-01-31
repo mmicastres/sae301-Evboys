@@ -1,0 +1,91 @@
+{% extends "index.html.twig" %}
+
+{% block section %}
+	<div class="container mt-5">
+		<h1>Modifier votre projet</h1>
+		{% for pro in pros %}
+			<form
+				action="" method="post" enctype="multipart/form-data" class="mt-3">
+				<!-- Champ pour l'ID (peut être un champ caché si nécessaire) -->
+				<div class="form-group">
+					<label for="id_projets">ID du Projet:</label>
+					<input type="text" name="id_projets" id="id_projets" value="{{pro.id_projets}}" class="form-control" readonly>
+				</div>
+
+				<!-- Champ pour le Titre -->
+				<div class="form-group">
+					<label for="titre">Titre:</label>
+					<input type="text" name="titre" id="titre" value="{{pro.titre}}" class="form-control">
+				</div>
+
+				<!-- Champ pour l'Image -->
+				<div class="form-group">
+					<label for="img">Image:</label>
+					<input type="file" name="img" id="img" class="form-control-file" enctype="multipart/form-data" value="">
+				</div>
+
+				<!-- Champ pour la Description -->
+				<div class="form-group">
+					<label for="description">Description:</label>
+					<textarea name="description" id="description" class="form-control">{{pro.description}}</textarea>
+				</div>
+
+				<!-- Champ pour le lien_demo -->
+				<div class="form-group">
+					<label for="lien_demo">Lien démo:</label>
+					<input type="text" name="lien_demo" id="lien_demo" value="{{pro.lien_demo}}" class="form-control">
+				</div>
+
+				<!-- Champ pour le lien_sources -->
+				<div class="form-group">
+					<label for="lien_sources">Lien sources:</label>
+					<input type="text" name="lien_sources" id="lien_sources" value="{{pro.lien_source}}" class="form-control">
+				</div>
+
+				<!-- Champ pour la validation -->
+				<div class="form-group">
+					<label for="validation">Validation:</label>
+					<select name="validation" id="validation" class="form-control">
+						<option value="1">Validé</option>
+						<option value="0">Non validé</option>
+					</select>
+				</div>
+
+				<!-- Champ pour le Contexte -->
+				<div class="form-group">
+					<label for="id_contexte">Contexte:</label>
+					<select name="id_contexte" id="id_contexte" class="form-control">
+						{% for cont in contextes %}
+							<option value="{{cont.id_contexte}}">{{cont.id}}</option>
+						{% endfor %}
+
+					</select>
+				</div>
+
+				<!-- Champ pour la Catégorie -->
+				<div class="form-group">
+					<label for="id_categories">Catégorie:</label>
+					<select name="id_categories" id="id_categories" class="form-control">
+						{% for cat in categories %}
+							<option value="{{cat.id_categories}}">{{cat.categorie}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div class="form-group ">
+					<label for="id_tags" class="col-sm-2 col-form-label col-form-label-sm">Tags</label>
+					<div class="col-sm-10">
+						{% for tag in tags %}
+							<label for="coding">{{tag.nom}}</label>
+							<input type="checkbox" id="id_tags_{{tag.id_tags}}" name="id_tags[]" value="{{tag.id_tags}}"/>
+
+						{% endfor %}
+					</div>
+				</div>
+
+				<!-- Bouton de soumission -->
+				<button type="submit" name="modification" class="btn btn-primary">Modification</button>
+			</form>
+		{% endfor %}
+	</div>
+{% endblock %}

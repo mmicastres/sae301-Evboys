@@ -1,0 +1,45 @@
+{% extends "index.html.twig" %}
+
+{% block section %}
+	<div class="container mt-5">
+		{% if admin == false %}
+
+			<h1 class="mb-4 text-light">Vos Projets</h1>
+		{% endif %}
+		{% if admin == true %}
+
+			<h1 class="mb-4 text-light">Projets Disponible</h1>
+		{% endif %}
+		<table class="table table-hover table-dark">
+			<thead>
+				<tr>
+					<th scope="col">Titre</th>
+					<th scope="col">Description</th>
+					<th scope="col">Actions</th>
+					<th>Suppression</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for pro in pros %}
+					<tr>
+						<td>{{ pro.titre }}</td>
+						<td>{{ pro.description }}</td>
+						<td>
+							<form action="?action=modif" method="post">
+								<button type="submit" value='{{pro.id_projets}}' name="modifier" class="btn btn-outline-light btn-sm">Modifier</button>
+							</form>
+						</td>
+						<td>
+							<form action="index.php" method="post">
+								<button type="submit" value='{{pro.id_projets}}' name="supprimer" class="btn btn-outline-danger btn-sm">Supprimer</button>
+							</form>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<form action="?action=ajout" method="post">
+			<button type="submit" value='' name="ajouter" class="btn btn-outline-light btn-xl">Ajouter</button>
+		</form>
+	</div>
+{% endblock %}

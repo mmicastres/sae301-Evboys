@@ -1,0 +1,24 @@
+{% extends "index.html.twig" %}
+
+{% block section %}
+	<h1>Gestion des catégories</h1>
+
+	<form action="index.php" method="post">
+
+		<label for="id_categories">Sélectionnez la catégories à modifier/supprimer</label>
+
+		<select name="id_categories" id="id_categories">
+			<option value="default" selected disabled hidden>Sélectionner la catégorie</option>
+			{% for cat in categories %}
+				<option value="{{cat.id_categories}}">{{cat.categorie}}</option>
+			{% endfor %}
+		</select>
+		<label for="categorie">Titre de la catégorie</label>
+		<input type="text" name="categorie" id="categorie" placeholder="Titre de la catégorie">
+<input type="submit" class="btn btn-success" name="ajoutCat" value="Ajouter"/>
+<input type="submit" class="btn btn-primary" name="modifCat" value="Modifier"/>
+<input type="submit" class="btn btn-danger" name="supprCat" value="Supprimer"/>
+
+	</form>
+
+{% endblock %}

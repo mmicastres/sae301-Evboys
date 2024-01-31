@@ -1,0 +1,15 @@
+{% extends "index.html.twig" %}
+
+{% block section %}
+	<h1>Rechercher Projet</h1>
+
+	<form action="index.php" method="post">
+		<label for="titre">Titre Projet</label>
+		<input type="text" name="titre" id="titre" placeholder="Titre du projet">
+		<label for="prenom">Description Projet</label>
+		<input type="text" name="prenom" id="prenom" placeholder="Description du projet">
+		
+		<input type="submit" class="btn btn-success" name="recherche" value="Rechercher"/>
+		
+	</form>
+{% endblock %}

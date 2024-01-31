@@ -1,0 +1,24 @@
+{% extends "index.html.twig" %}
+
+{% block section %}
+	<h1>Gestion des contexte</h1>
+
+	<form action="index.php" method="post">
+
+		<label for="id_tags">Sélectionnez le contexte à modifier/supprimer</label>
+
+		<select name="id_tags" id="id_tags">
+			<option value="default" selected disabled hidden>Sélectionner le contexte</option>
+			{% for tag in tags %}
+				<option value="{{tag.id_tags}}">{{tag.nom}}</option>
+			{% endfor %}
+		</select>
+        <label for="categorie">Titre de la catégorie</label>
+		<input type="text" name="nom" id="nom" placeholder="Titre du Tags">
+		<input type="submit" class="btn btn-success" name="ajoutTags" value="Ajouter"/>
+		<input type="submit" class="btn btn-primary" name="modifTags" value="Modifier"/>
+		<input type="submit" class="btn btn-danger" name="supprTags" value="Supprimer"/>
+
+	</form>
+
+{% endblock %}
